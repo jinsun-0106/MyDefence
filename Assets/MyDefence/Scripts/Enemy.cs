@@ -9,10 +9,10 @@ namespace MyDefence
     {
         #region 필드 선언부
         //이동 목표 위치를 가지고 있는 오브젝트
-        public Transform target;
+        private Transform target;
 
         //이동 속도
-        public float speed;
+        public float speed = 10f;
 
         #endregion
 
@@ -20,7 +20,8 @@ namespace MyDefence
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            //초기화
+            target = WayPoints.points[0];
         }
 
         // Update is called once per frame
