@@ -9,7 +9,7 @@ namespace MyDefence
     {
         #region 필드 선언부
         //이동 목표 위치를 가지고 있는 오브젝트
-        private Transform target;
+        public Transform target;
 
         //이동 속도
         public float speed = 10f;
