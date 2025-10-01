@@ -2268,6 +2268,10 @@ MonoBehaviour:
   partToRotate: {fileID: 2068948535}
   rotateSpeed: 10
   attackRange: 5
+  searchTimer: 0.2
+  fireTimer: 1
+  bulletPrefab: {fileID: 1882476863159587492, guid: 2f181e3c1138f9041955607b990eae7a, type: 3}
+  firePoint: {fileID: 1618108935}
 --- !u!1001 &9168167963361348197
 PrefabInstance:
   m_ObjectHideFlags: 0

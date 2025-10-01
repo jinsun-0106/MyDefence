@@ -22,6 +22,14 @@ namespace MyDefence
         public float searchTimer = 0.2f;
         private float countdown = 0f;
 
+        //발사 타이머
+        public float fireTimer = 1f;
+        private float fireCountdown = 0f;
+
+        //총알
+        public GameObject bulletPrefab;
+        public Transform firePoint;
+
         #endregion
 
         #region Unity Event Method
@@ -30,6 +38,8 @@ namespace MyDefence
         {
             //초기화(마이너스 누적은 초기화 필요)
             countdown = searchTimer;
+
+            //countdown2 = gunTimer;
         }
 
         private void Update()
@@ -40,26 +50,32 @@ namespace MyDefence
             {
                 //타이머 기능 - 가까운 적 찾기
                 UpdateTarget();
+                
 
                 //타이머 초기화
                 countdown = searchTimer;
             }
             countdown -= Time.deltaTime;
-                        
+                 
 
             //타겟이 null이면 밑에 실행하지 마쇼!
             if (target == null) return;
 
-            //타겟을 향해서 partToRotate 회전
-            //방향을 구하기
-            Vector3 dir = target.transform.position - this.transform.position;
-            //방향의 회전값을 구하기
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Quaternion lerpRotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotateSpeed);
-            Vector3 eulerValue = lerpRotation.eulerAngles;
-            //y축 기준으로 회전
-            partToRotate.rotation = Quaternion.Euler(0f, eulerValue.y, 0f);
 
+
+            //타겟을 향해서 partToRotate 회전
+            LockOn();
+
+            //가장 가까운 적에게 1초마다 총알을 발사
+            fireCountdown += Time.deltaTime;
+            if (fireCountdown >= fireTimer)
+            {
+                //타이머 기능
+                Shoot();
+
+                //타이머 초기화
+                fireCountdown = 0f;
+            }
 
         }
 
@@ -105,11 +121,40 @@ namespace MyDefence
             if (nearEnemy != null && minDistance <= attackRange)
             {
                 target = nearEnemy;
+                //Debug.Log("Shoot!!");
             }
             else
             {
                 target = null;
             }
+
+        }
+
+        //타겟을 향해 터렛 헤드 돌리기
+        void LockOn()
+        {
+            //방향을 구하기
+            Vector3 dir = target.transform.position - this.transform.position;
+            //방향의 회전값을 구하기
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Quaternion lerpRotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+            Vector3 eulerValue = lerpRotation.eulerAngles;
+            //y축 기준으로 회전
+            partToRotate.rotation = Quaternion.Euler(0f, eulerValue.y, 0f);
+
+        }
+
+        //발사
+        void Shoot()
+        {
+            //총알 firepoint에 생성
+            GameObject bulletGo = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.rotation);
+            Bullet bullet = bulletGo.GetComponent<Bullet>();
+            if (bullet != null )
+            {
+                bullet.SetTarget(target.transform);
+            }
+            
 
         }
 
