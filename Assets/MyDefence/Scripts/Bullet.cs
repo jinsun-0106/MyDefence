@@ -58,7 +58,7 @@ namespace MyDefence
 
 
             //타겟 킬
-            Debug.Log("히트다 히트~");
+            //Debug.Log("히트다 히트~");
             
             Destroy(target.gameObject);
             

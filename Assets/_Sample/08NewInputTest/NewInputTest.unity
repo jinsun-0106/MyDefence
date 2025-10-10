@@ -438,14 +438,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c29680e336fdc84dbecf39d680590bd, type: 3}
+  m_Script: {fileID: 11500000, guid: e35e570821ff9204196de47c0da32a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  scrollSpeed: 3
-  minPosY: 7
-  maxPosY: 30
-  border: 20
 --- !u!1001 &365029134
 PrefabInstance:
   m_ObjectHideFlags: 0
