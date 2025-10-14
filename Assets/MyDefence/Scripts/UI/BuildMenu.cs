@@ -16,10 +16,10 @@ namespace MyDefence
 
         }
 
-        public void SelectAnotherTower()
+        public void SelectRocketTower()
         {
-            Debug.Log("다른 타워를 선택하였습니다!");
-            BuildManager.Instance.SetTurretToBuild(BuildManager.Instance.anotherTowerPrefab);
+            Debug.Log("로켓 타워를 선택하였습니다!");
+            BuildManager.Instance.SetTurretToBuild(BuildManager.Instance.rocketTowerPrefab);
         }
 
 

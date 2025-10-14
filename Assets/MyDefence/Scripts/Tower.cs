@@ -154,6 +154,9 @@ namespace MyDefence
             {
                 bullet.SetTarget(target.transform);
             }
+
+            //발사하고 맞지 않았을 때 탄환 없애기 (무효탄 제거), 보통의 슈팅 게임에서 사용됨
+            //Destroy(bulletGo, 3f);
             
 
         }

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace MyDefence
 {
+    /// <summary>
+    /// 탄환 발사체를 관리하는 클래스
+    /// </summary>
     public class Bullet : MonoBehaviour
     {
         #region Variables
@@ -19,7 +22,11 @@ namespace MyDefence
         #region Unity Event Method
         private void Update()
         {
-            if (target == null) return;
+            if (target == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
 
             //타겟까지 이동하기
             Vector3 dir = target.position - transform.position;
@@ -37,6 +44,10 @@ namespace MyDefence
             }
 
             transform.Translate(dir.normalized * Time.deltaTime * moveSpeed, Space.World);
+
+            //타겟 방향으로 바라보기
+            transform.LookAt(target);
+
         }
 
         #endregion
@@ -50,23 +61,26 @@ namespace MyDefence
         }
 
         //타겟 명중
-        void HitTarget()
+        protected virtual void HitTarget()
         {
             //타격 위치에 이팩트를 생성한 후 3초 뒤에 이팩트 오브잭트 킬
-            GameObject effectGo = Instantiate(impactPrefab, target.position, Quaternion.identity);
+            GameObject effectGo = Instantiate(impactPrefab, this.transform.position, Quaternion.identity);
             Destroy(effectGo, 3f);
 
-
-            //타겟 킬
             //Debug.Log("히트다 히트~");
-            
-            Destroy(target.gameObject);
-            
+            Damage(target);
 
             //탄환 킬
             Destroy(this.gameObject);
             
             
+        }
+
+        //타격 당한 적에게 데미지 주기
+        protected void Damage(Transform enemy)
+        {
+            //타겟 킬                        
+            Destroy(enemy.gameObject);
         }
 
         #endregion
