@@ -33,14 +33,35 @@ namespace MyDefence
         #endregion
 
         #region Variables
-        //타일에 설치할 프리팹 오브젝트를 저장하는 변수
-        //여러 개의 타워 프리팹 중 선택된 프리팹을 저장하는 변수
-        private GameObject turretToBuild;
+        //타일에 설치할 타워 blueprint(프리팹, 가격....)를 저장하는 변수
+        //여러 개의 타워 blueprint 중 선택된 blueprint을 저장하는 변수
 
-        public GameObject machineGunPrefab;
+        private TowerBlueprint towerToBuild;
 
-        public GameObject rocketTowerPrefab;
         #endregion
+
+        #region Property
+        //건설 불가능 여부 체크하는 속성 : 선택되지 않았으면
+        public bool CannotBuild
+        {
+            get {  return towerToBuild == null; }
+        }
+
+        //건설 비용 부족 체크
+        public bool HasBuildCost
+        {
+            get
+            {
+                //선택되지 않았으면
+                if(towerToBuild == null)
+                    return false;
+
+                return PlayerStats.HasMoney(towerToBuild.cost);
+            }
+        }
+
+        #endregion
+
 
         #region Unity Event Method
         private void Start()
@@ -52,15 +73,19 @@ namespace MyDefence
         #endregion
 
         #region Custom Method
-        public GameObject GetTurretToBuild()
+        public TowerBlueprint GetTurretToBuild()
         {
-            return turretToBuild;
+            return towerToBuild;
         }
 
-        public void SetTurretToBuild(GameObject turret)
+        
+        public void SetTurretToBuild(TowerBlueprint tower)
         {
-            turretToBuild = turret;
+            towerToBuild = tower;
         }
+
+        
+
         #endregion
 
 

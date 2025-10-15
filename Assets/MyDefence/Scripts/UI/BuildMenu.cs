@@ -7,20 +7,44 @@ namespace MyDefence
     /// </summary>
     public class BuildMenu : MonoBehaviour
     {
+        #region Variables
+
+        //BuildManager(싱글톤) 객체 선언
+        private BuildManager buildManager;
+
+        //타워 리스트
+        public TowerBlueprint machineGun;
+        public TowerBlueprint rocketTower;
+
+        #endregion
+
+        #region Unity Event Method
+        private void Start()
+        {
+            //참조(길이 줄이기)
+            buildManager = BuildManager.Instance;
+        }
+
+        #endregion
+
+        #region Custom method
+
         //머신건 버튼 선택시 호출되는 함수
         public void SelectMachineGun()
         {
             Debug.Log("머신건 타워를 선택하였습니다!");
             //turretToBuild = machineGunPrefab;
-            BuildManager.Instance.SetTurretToBuild(BuildManager.Instance.machineGunPrefab);
+            buildManager.SetTurretToBuild(machineGun);
 
         }
 
         public void SelectRocketTower()
         {
             Debug.Log("로켓 타워를 선택하였습니다!");
-            BuildManager.Instance.SetTurretToBuild(BuildManager.Instance.rocketTowerPrefab);
+            buildManager.SetTurretToBuild(rocketTower);
         }
+
+        #endregion
 
 
     }

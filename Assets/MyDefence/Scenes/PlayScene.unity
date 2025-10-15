@@ -286,7 +286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1569,8 +1569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c04b42a8fdc4646b080fad84714c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineGunPrefab: {fileID: 5315620646849558318, guid: f3461fbd7838c9d49acba81cfa209fb4, type: 3}
-  rocketTowerPrefab: {fileID: 7375579369579249944, guid: ea333939c8cfdb64dad6fc46a93c53f4, type: 3}
 --- !u!4 &1047036506
 Transform:
   m_ObjectHideFlags: 0
@@ -1850,6 +1848,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276187415}
   m_CullTransparentMesh: 1
+--- !u!1 &1440019824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440019826}
+  - component: {fileID: 1440019825}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1440019825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440019824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037fea186f5ae2c4a80bf914cd37d624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
+--- !u!4 &1440019826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440019824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1463518030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1969,7 +2012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 250
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2475,6 +2518,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9090775924396454b85d8f8fcdcc4f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineGun:
+    prefab: {fileID: 5315620646849558318, guid: f3461fbd7838c9d49acba81cfa209fb4, type: 3}
+    cost: 100
+    offsetPos: {x: 0, y: 0, z: 0}
+  rocketTower:
+    prefab: {fileID: 7375579369579249944, guid: ea333939c8cfdb64dad6fc46a93c53f4, type: 3}
+    cost: 250
+    offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1745988134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,11 +2977,12 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1631887536}
+  - {fileID: 1440019826}
+  - {fileID: 1047036506}
   - {fileID: 2100923028}
   - {fileID: 194321221}
   - {fileID: 1059220803}
   - {fileID: 1250985125}
   - {fileID: 1707145857}
   - {fileID: 422603011}
-  - {fileID: 1047036506}
   - {fileID: 876463665}
