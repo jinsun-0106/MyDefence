@@ -9,6 +9,7 @@ namespace MyDefence
     public class Tile : MonoBehaviour
     {
         #region Variables
+
         //BuildManager(싱글톤) 객체 선언
         private BuildManager buildManager;
 
@@ -32,6 +33,12 @@ namespace MyDefence
 
         //원래 메터리얼
         private Material startMaterial;
+
+        //건설 비용 부족시 바뀌는 메테리얼
+        public Material moneyMaterial;
+
+        //타워 건설 효과
+        public GameObject buildEffectPrefab;
                 
         #endregion
 
@@ -92,9 +99,16 @@ namespace MyDefence
             {
                 return;
             }
-            //Debug.Log("마우스가 들어간다 - 연두색");
-            //renderer.material.color = hoverColor;
-            renderer.material = hoverMaterial;
+
+            if(buildManager.HasBuildCost)
+            {
+                renderer.material = hoverMaterial;
+            }
+            else
+            {
+                renderer.material = moneyMaterial;
+            }
+            
 
         }
 
@@ -125,6 +139,10 @@ namespace MyDefence
 
             //건설
             tower = Instantiate(blueprint.prefab, this.transform.position + blueprint.offsetPos, Quaternion.identity);
+
+            //건설 이펙트 효과 - 생성 후 2초 뒤 킬 예약
+            GameObject effectGo = Instantiate(buildEffectPrefab, this.transform.position, Quaternion.identity);
+            Destroy(effectGo, 2f);
 
             //turretToBuild = null; 한 번 건설 후 다시 건설하지 못하게 한다
             buildManager.SetTurretToBuild(null);

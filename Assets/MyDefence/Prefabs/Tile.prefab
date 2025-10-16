@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7ebd112d00752439aad64224a18f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.6093365, g: 1, b: 0, a: 0}
   hoverMaterial: {fileID: 2100000, guid: baf35eee5c6f1fc41ab1c22b209c817d, type: 2}
-  towerPrefab: {fileID: 5315620646849558318, guid: f3461fbd7838c9d49acba81cfa209fb4, type: 3}
+  moneyMaterial: {fileID: 2100000, guid: cefc85e9f5f9dac419d957d03bf714e2, type: 2}
+  buildEffectPrefab: {fileID: 4391874786100768383, guid: b94856358c7c9e5418040ce714bdd82d, type: 3}
