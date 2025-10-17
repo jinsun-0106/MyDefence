@@ -52,7 +52,7 @@ namespace MyDefence
 
             lives = startLife;      //초기 생명 갯수 지급
 
-            Debug.Log($"초기 소지금 {startMoney}골드를 지급하였습니다");
+            //Debug.Log($"초기 소지금 {startMoney}골드를 지급하였습니다");
 
         }
 
@@ -62,7 +62,7 @@ namespace MyDefence
         #region Custom Method
 
         //돈 벌기
-        public void AddMoney(int amount)
+        public static void AddMoney(int amount)
         {
             money += amount;
         }

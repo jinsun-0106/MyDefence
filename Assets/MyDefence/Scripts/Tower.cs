@@ -9,7 +9,7 @@ namespace MyDefence
     {
         #region Variables
         //공격 타겟이 된 Enemy - 가장 가까운 적
-        private GameObject target;
+        protected GameObject target;
 
         //회전
         public Transform partToRotate;          //회전을 관리하는 오브젝트
@@ -20,7 +20,7 @@ namespace MyDefence
 
         //찾기 타이머(변수 2개 필요!)
         public float searchTimer = 0.2f;
-        private float countdown = 0f;
+        protected float countdown = 0f;
 
         //발사 타이머
         public float fireTimer = 1f;
@@ -34,7 +34,7 @@ namespace MyDefence
 
         #region Unity Event Method
 
-        private void Start()
+        protected virtual void Start()
         {
             //초기화(마이너스 누적은 초기화 필요)
             countdown = searchTimer;
@@ -42,7 +42,7 @@ namespace MyDefence
             //countdown2 = gunTimer;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             //타이머 공식(기능 제외)
             //0.2초마다 가장 가까운 적 찾기 (매 프레임 마다 X => 과부하 걸릴 수 있음)
@@ -93,7 +93,7 @@ namespace MyDefence
 
         #region Custom Method
         //타워에서 가장 가까운 적 찾기
-        void UpdateTarget()
+        protected void UpdateTarget()
         {
             //모든 오브젝트 가져오기
             //맵 위에 있는 모든 enemy 게임 오브젝트 가져오기
@@ -131,7 +131,7 @@ namespace MyDefence
         }
 
         //타겟을 향해 터렛 헤드 돌리기
-        void LockOn()
+        protected void LockOn()
         {
             //방향을 구하기
             Vector3 dir = target.transform.position - this.transform.position;

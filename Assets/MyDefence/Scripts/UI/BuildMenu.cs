@@ -15,6 +15,7 @@ namespace MyDefence
         //타워 리스트
         public TowerBlueprint machineGun;
         public TowerBlueprint rocketTower;
+        public TowerBlueprint laserTower;
 
         #endregion
 
@@ -42,6 +43,12 @@ namespace MyDefence
         {
             Debug.Log("로켓 타워를 선택하였습니다!");
             buildManager.SetTurretToBuild(rocketTower);
+        }
+
+        public void SelectLaserTower()
+        {
+            Debug.Log("레이저 타워를 선택하였습니다!");
+            buildManager.SetTurretToBuild(laserTower);
         }
 
         #endregion

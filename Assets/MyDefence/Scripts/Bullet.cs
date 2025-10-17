@@ -17,6 +17,11 @@ namespace MyDefence
         //타격 이팩트 프리팹 오브젝트
         public GameObject impactPrefab;
 
+        //공격 데미지(공격력)
+        [SerializeField]
+        private float attackDamage = 50f;
+
+
         #endregion
 
         #region Unity Event Method
@@ -33,12 +38,13 @@ namespace MyDefence
 
             //남은 거리( == dir.magnitude )
             float distance = Vector3.Distance(target.position, transform.position);
+
             //이번 프레임에 이동한 거리
             float distanceThisFrame = Time.deltaTime * moveSpeed;
+
             if (dir.magnitude <= distanceThisFrame)
             {
                 HitTarget();
-
 
                 return;
             }
@@ -68,6 +74,7 @@ namespace MyDefence
             Destroy(effectGo, 3f);
 
             //Debug.Log("히트다 히트~");
+            //타격 당한 적에게 데미지 주기
             Damage(target);
 
             //탄환 킬
@@ -77,10 +84,19 @@ namespace MyDefence
         }
 
         //타격 당한 적에게 데미지 주기
-        protected void Damage(Transform enemy)
+        protected void Damage(Transform _target)
         {
+            //_target에게 attackDamage 만큼 데미지 주기
+            //객체 가져오기 -> 함수 사용
+            Enemy enemy =_target.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(attackDamage);
+
+            }
+                        
             //타겟 킬                        
-            Destroy(enemy.gameObject);
+            //Destroy(_target.gameObject);
         }
 
         #endregion

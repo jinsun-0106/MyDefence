@@ -35,7 +35,7 @@ namespace MyDefence
             GameObject effectGo = Instantiate(impactPrefab, this.transform.position, Quaternion.identity);
             Destroy(effectGo, 3f);
 
-            //Debug.Log("히트다 히트~");
+            
             //damageRange 안에 있는 모든 적에게 데미지 주는 범위
             Explosion();
 

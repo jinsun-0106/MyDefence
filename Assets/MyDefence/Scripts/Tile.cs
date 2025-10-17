@@ -147,7 +147,7 @@ namespace MyDefence
             //turretToBuild = null; 한 번 건설 후 다시 건설하지 못하게 한다
             buildManager.SetTurretToBuild(null);
 
-            Debug.Log($"건설하고 남은 소지금: {PlayerStats.Money}");
+            //Debug.Log($"건설하고 남은 소지금: {PlayerStats.Money}");
 
         }
 
