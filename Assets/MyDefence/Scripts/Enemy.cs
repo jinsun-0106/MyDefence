@@ -12,7 +12,12 @@ namespace MyDefence
         public Transform target;
 
         //이동 속도
-        public float speed = 10f;
+        [SerializeField]
+        private float speed = 10f;
+
+        //이동 속도 초기화
+        [SerializeField]
+        private float startSpeed = 4f;
 
         //체력
         private float health;
@@ -22,6 +27,9 @@ namespace MyDefence
 
         //죽는 효과
         public GameObject dieEffectPrefab;
+
+        //죽음 체크
+        private bool isDeath = false;
 
         //죽음 보상
         [SerializeField]
@@ -35,6 +43,8 @@ namespace MyDefence
         {
             //초기화
             health = startHealth;
+
+            speed = startSpeed;
 
             target = WayPoints.points[0];
         }
@@ -60,6 +70,9 @@ namespace MyDefence
                 
             }
 
+            //이동속도 초기 속도로 복원
+            speed = startSpeed;
+
         }
         #endregion
 
@@ -83,7 +96,7 @@ namespace MyDefence
             //Debug.Log($"Enemy Health: {health}");
 
             //죽음 체크
-            if (health <= 0)
+            if (health <= 0 && isDeath == false)
             {
                 health = 0;
                 Die();
@@ -94,8 +107,10 @@ namespace MyDefence
         //죽음 처리
         private void Die()
         {
-            //죽음 처리 (사운드, 이펙트 등등 넣으면 됨)
+            //죽음 체크
+            isDeath = true;
 
+            //죽음 처리 (사운드, 이펙트 등등 넣으면 됨)
             //죽음 이펙트 효과 - 생성 후 몇 초 뒤 킬 예약
             GameObject effectGo = Instantiate(dieEffectPrefab, this.transform.position, Quaternion.identity);
             Destroy(effectGo, 1.5f);
@@ -105,6 +120,14 @@ namespace MyDefence
 
             //Enemy Kill
             Destroy(this.gameObject);
+
+        }
+
+        //이동속도 느리게
+        public void Slow(float rate)            //40% 감속
+        {
+            speed = startSpeed * (1 - rate);               //10 * 0.4 = 4 -> 이거 아님!! 이건 60% 감속,,
+            
 
         }
 

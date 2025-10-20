@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d024a144185acd647859d47c98635982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCheating: 0
+  isCheating: 1
 --- !u!1001 &1463518030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2947,63 +2947,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545523227}
   m_CullTransparentMesh: 1
---- !u!1001 &1607467469
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1285583950914700331, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_Name
-      value: LaserTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.0740414
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.06999993
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.9792246
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883858371169183670, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
 --- !u!1001 &1631887536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,7 +3267,7 @@ MonoBehaviour:
     offsetPos: {x: 0, y: 0, z: 0}
   laserTower:
     prefab: {fileID: 1285583950914700331, guid: 6a10012e763a1bb4698cb703b69768c2, type: 3}
-    cost: 350
+    cost: 0
     offsetPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1745691887
 GameObject:
@@ -3935,4 +3878,3 @@ SceneRoots:
   - {fileID: 1250985125}
   - {fileID: 1707145857}
   - {fileID: 422603011}
-  - {fileID: 1607467469}
