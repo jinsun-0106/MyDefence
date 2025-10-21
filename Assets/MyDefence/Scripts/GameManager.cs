@@ -11,6 +11,9 @@ namespace MyDefence
         //게임오버 체크 변수
         private bool isGameOver = false;
 
+        //게임오버 UI
+        public GameObject gameOverUI;
+
         //치트 체크 변수
         [SerializeField]
         private bool isCheating = false;
@@ -30,10 +33,16 @@ namespace MyDefence
                 GameOver();
             }
 
+            
             //치트키
             if (Input.GetKeyDown(KeyCode.M))
             {
                 ShowMeTheMoney();
+            }
+
+            if(Input.GetKeyDown(KeyCode.O))
+            {
+                ShowGameOverUI();
             }
 
         }
@@ -44,11 +53,19 @@ namespace MyDefence
         //게임 오버 처리
         private void GameOver()
         {
-            Debug.Log("Game Over");
-
+            //Debug.Log("Game Over");
             isGameOver = true;
+
+            //효과: vfx, sfx
+            //패널티 적용 등등
+
+            //UI창 열기
+            gameOverUI.SetActive(true);
+
+
         }
 
+        
         //치트키
         void ShowMeTheMoney()
         {
@@ -58,6 +75,17 @@ namespace MyDefence
 
             PlayerStats.AddMoney(100000);
         }
+
+        void ShowGameOverUI()
+        {
+            //치트 체크
+            if (isCheating == false)
+                return;
+
+            GameOver();
+
+            }
+
 
         void LevelyupCheat()
         {
