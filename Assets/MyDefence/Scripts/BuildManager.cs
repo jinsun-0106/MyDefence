@@ -38,6 +38,11 @@ namespace MyDefence
 
         private TowerBlueprint towerToBuild;
 
+        //타일 UI
+        public TileUI tileUI;
+
+        //선택된 타일 저장(타일 UI가 (올려져)있는 타일)
+        private Tile selectTile;
         #endregion
 
         #region Property
@@ -59,6 +64,7 @@ namespace MyDefence
                 return PlayerStats.HasMoney(towerToBuild.cost);
             }
         }
+
 
         #endregion
 
@@ -84,6 +90,33 @@ namespace MyDefence
             towerToBuild = tower;
         }
 
+        //타워 오브젝트가 설치된 타일을 선택, 선택된 타일 정보를 매개변수로 받아온다
+        public void SelectTile(Tile tile)
+        {
+            //저장된 타일과 선택된 타일 체크
+            if(tile == selectTile)
+            {
+                DeselectTile();
+                return;
+            }
+
+            //설치될 타워 정보 초기화
+            towerToBuild = null;
+
+            selectTile = tile;
+
+            tileUI.ShowTileUI(selectTile);
+        }
+
+        //선택된 타일 해체, 선택된 타일 초기화
+        public void DeselectTile()
+        {
+            //설치될 타워 정보 초기화
+            towerToBuild = null;
+
+            tileUI.HideTileUI();
+            selectTile = null;
+        }
         
 
         #endregion
