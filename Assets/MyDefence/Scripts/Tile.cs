@@ -17,7 +17,7 @@ namespace MyDefence
         private GameObject tower;
 
         //타일에 설치된 타워 오브젝트 blueprint 객체 (프리팹, 가격, 업그레이드 프리팹, 업그레이드 가격, 설치조정 위치 ....)
-        private TowerBlueprint blueprint;
+        public TowerBlueprint blueprint;
 
         //렌더러 컴포넌트 인스턴스 변수 선언
         private Renderer renderer;
@@ -39,6 +39,12 @@ namespace MyDefence
 
         //타워 건설 효과
         public GameObject buildEffectPrefab;
+
+        //판매 효과
+        public GameObject sellTowerPrefab;
+
+        //타워 업그레이드 완료 여부 체크
+        public bool isUpgradeCompeleted = false;
                 
         #endregion
 
@@ -167,6 +173,9 @@ namespace MyDefence
             //업그레이드 비용 처리
             PlayerStats.UseMoney(blueprint.upgradeCost);
 
+            //업그레이드 완료 처리
+            isUpgradeCompeleted = true;
+
             //기존에 설치된 타워 킬
             Destroy(tower);
 
@@ -181,6 +190,28 @@ namespace MyDefence
             //선택된 타일 해제
             buildManager.DeselectTile();
 
+        }
+
+        //설치된 타워를 판매(제거)한다
+        public void SellTower()
+        {
+            Debug.Log("설치된 타워를 판매합니다");
+
+            //판매 가격 벌기
+            PlayerStats.AddMoney(blueprint.GetSellCost());
+            
+            //업그레이드 완료 초기화
+            isUpgradeCompeleted = false;
+
+            //타워 제거(킬)
+            Destroy(tower);
+
+            //판매 이펙트
+            GameObject effectGo = Instantiate(sellTowerPrefab, this.transform.position, Quaternion.identity);
+            Destroy(effectGo, 2f);
+
+            //선택된 타일 해제
+            buildManager.DeselectTile();                   
 
 
         }
