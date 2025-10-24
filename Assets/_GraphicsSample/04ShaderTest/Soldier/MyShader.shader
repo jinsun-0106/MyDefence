@@ -69,7 +69,19 @@ Lighting 종류
 
 4) Emissive : 메시 표면에서 자체적으로 방출되는 색
 
+Shader 프로그램
+: 화면에 출력할 픽셀의 위치와 색상을 계산하는 함수를 작성하는 것
 
+언어
+ShaderLab : 유니티에서 사용하는 셰이더 스크립트 언어
+셰이더 언어 CG/ HLSL / GLSL
+CG : C for Graphics, MS와 엔비디아에서 만든 셰이딩 언어
+GLSL : OpenGL에서 사용하는 셰이딩 언어 (OpenGL Shading Language)
+HLSL : 가장 유명하고 보편적으로 사용하는 언어, Unity 6에서 사용, High Level Shading Language
 
+ShaderLab으로 작성할 수 있는 셰이더 프로그램
+: 고정 함수 셰이더 - x
+: 표면 셰이더 - suface shader
+: 버텍스/프레그먼트 셰이더 : 6.0 이상에서는 
 
 */
