@@ -14,6 +14,11 @@ namespace MyDefence
         //Paused UI 게임 오브젝트
         public GameObject paused;
 
+        //씬 페이더
+        public SceneFader fader;
+
+        private string loadToScene = "MainMenu";
+
         #endregion
 
         #region Unity Event Method
@@ -52,6 +57,7 @@ namespace MyDefence
         public void MainMenu()
         {
             Debug.Log("Go to Menu");
+            fader.FadeTo(loadToScene);
 
             // 씬을 로드하기 전에 게임 시간을 정상화
             Time.timeScale = 1f;
@@ -65,7 +71,7 @@ namespace MyDefence
 
             string nowSceneName = SceneManager.GetActiveScene().name;                   //현재하고 있는 씬 이름 호출
 
-            SceneManager.LoadScene(nowSceneName);
+            fader.FadeTo(nowSceneName);
 
             // 씬을 로드하기 전에 게임 시간을 정상화
             Time.timeScale = 1f;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MyDefence
 {
@@ -35,6 +36,9 @@ namespace MyDefence
         [SerializeField]
         private int rewordMoney = 50;
 
+        //데미지 UI
+        public Image hpBarImage;
+
         #endregion
 
 
@@ -47,11 +51,14 @@ namespace MyDefence
             speed = startSpeed;
 
             target = WayPoints.points[0];
+
+
         }
 
         // Update is called once per frame
         void Update()
         {
+
             //타겟을 향해 이동하라
 
             //방향 설정
@@ -94,6 +101,9 @@ namespace MyDefence
         {
             health -= damage;
             //Debug.Log($"Enemy Health: {health}");
+
+            //데미지 UI
+            hpBarImage.fillAmount = health / startHealth;
 
             //죽음 체크
             if (health <= 0 && isDeath == false)
