@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MyDefence
 {
     public class MainMenu : MonoBehaviour
     {
         #region Variables
+        public SceneFader fader;
+
         [SerializeField]
         private string loadToScene = "PlayScene";
 
@@ -16,8 +17,7 @@ namespace MyDefence
         public void Play()
         {
             Debug.Log("Go to PlayScene");
-
-            SceneManager.LoadScene(loadToScene);
+            fader.FadeTo(loadToScene);
         }
 
         //나가기버튼 클릭 시 호출

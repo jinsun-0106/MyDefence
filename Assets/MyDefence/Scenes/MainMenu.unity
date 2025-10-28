@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8704ca238a30c1b49a247dd340d7f0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fader: {fileID: 452024935}
   loadToScene: PlayScene
 --- !u!4 &293915877
 Transform:
@@ -440,6 +441,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0b764361c086a4cb27b403e22160e2, type: 3}
+--- !u!114 &452024935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1000674027045461030, guid: 7c0b764361c086a4cb27b403e22160e2, type: 3}
+  m_PrefabInstance: {fileID: 452024934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffdc749ce338f84db91da24e3522348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &563458342
 GameObject:
   m_ObjectHideFlags: 0
@@ -25717,13 +25729,13 @@ Transform:
   m_GameObject: {fileID: 7336752527259242808}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.49, y: 0, z: 2.08}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -12.12, y: 0, z: 6}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8414239777301689619}
   - {fileID: 2153361849284022180}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8793452437263858587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &4138224199668179914
 ParticleSystemRenderer:
@@ -59060,6 +59072,7 @@ Transform:
   m_Children:
   - {fileID: 8797423131805272023}
   - {fileID: 563458343}
+  - {fileID: 4098620379484508010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8793513925534852925
@@ -59466,7 +59479,6 @@ SceneRoots:
   - {fileID: 1494998642}
   - {fileID: 293915877}
   - {fileID: 374184052}
-  - {fileID: 4098620379484508010}
   - {fileID: 8793452437263858587}
   - {fileID: 1025721291}
   - {fileID: 957113767}

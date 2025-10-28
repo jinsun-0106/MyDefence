@@ -57,6 +57,7 @@ namespace MyDefence
         public void MainMenu()
         {
             Debug.Log("Go to Menu");
+
             fader.FadeTo(loadToScene);
 
             // 씬을 로드하기 전에 게임 시간을 정상화

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Globalization;
 
 namespace MyDefence
 {
@@ -10,10 +11,17 @@ namespace MyDefence
     public class GameOver : MonoBehaviour
     {
         #region Variables
+        //
+        public SceneFader fader;
+
+        [SerializeField]
+        private string loadToScene = "MainMenu";
+
         //Rounds 텍스트
         public TextMeshProUGUI roundsText;
 
         #endregion
+
         //게임오버 UI가 활성화 될 때 Rounds 값을 한 번만 가져온다
         private void OnEnable()
         {
@@ -37,7 +45,8 @@ namespace MyDefence
         //메인메뉴 버튼을 눌렀을 때 호출
         public void MainMenu()
         {
-            Debug.Log("Go to Menu");
+            //Debug.Log("Go to Menu");
+            fader.FadeTo(loadToScene);
         }
 
         //게임 재시작 버튼 눌렀을 때 호출
@@ -54,7 +63,7 @@ namespace MyDefence
             //int nowBuildIndex = SceneManager.GetActiveScene().buildIndex;               //현재하고 있는 씬 빌드번호 호출
             string nowSceneName = SceneManager.GetActiveScene().name;                   //현재하고 있는 씬 이름 호출
 
-            SceneManager.LoadScene(nowSceneName);
+            fader.FadeTo(nowSceneName);
 
 
 

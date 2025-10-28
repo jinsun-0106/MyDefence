@@ -91,9 +91,11 @@ namespace MyDefence
             //생명 사용
             PlayerStats.UseLife(1);
 
+            //살아있는 적의 수를 줄인다
+            WaveSpawnManager.enemyAlive--;
+
             //Enemy 킬
-            Destroy(this.gameObject);
-            
+            Destroy(this.gameObject);            
         }
 
         //매개변수로 들어온 만큼 데미지를 입는다(체력 깎임)
@@ -124,6 +126,9 @@ namespace MyDefence
             //죽음 이펙트 효과 - 생성 후 몇 초 뒤 킬 예약
             GameObject effectGo = Instantiate(dieEffectPrefab, this.transform.position, Quaternion.identity);
             Destroy(effectGo, 1.5f);
+
+            //살아있는 적의 수를 줄인다
+            WaveSpawnManager.enemyAlive--;
 
             //보상 처리 - 죽이면 돈 50 줌
             PlayerStats.AddMoney(rewordMoney);

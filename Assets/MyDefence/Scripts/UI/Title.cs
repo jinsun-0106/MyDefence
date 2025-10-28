@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Globalization;
 
 namespace MyDefence
 {
@@ -10,6 +11,8 @@ namespace MyDefence
     public class Title : MonoBehaviour
     {
         #region Variables
+        public SceneFader fader;
+
         [SerializeField]
         private string loadToScene = "MainMenu";
 
@@ -82,7 +85,7 @@ namespace MyDefence
 
         private void GotoMainMenu()
         {
-            SceneManager.LoadScene(loadToScene);
+            fader.FadeTo(loadToScene);
         }
 
         private void ShowAnyKey()

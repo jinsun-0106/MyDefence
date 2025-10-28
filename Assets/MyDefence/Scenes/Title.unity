@@ -654,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a62241bdb36cf64d852959a817f7e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fader: {fileID: 1709527583}
   loadToScene: MainMenu
   showTimer: 3
   anyKeyUI: {fileID: 624460289}
@@ -850,6 +851,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0b764361c086a4cb27b403e22160e2, type: 3}
+--- !u!114 &1709527583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1000674027045461030, guid: 7c0b764361c086a4cb27b403e22160e2, type: 3}
+  m_PrefabInstance: {fileID: 1709527582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffdc749ce338f84db91da24e3522348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894953910
 GameObject:
   m_ObjectHideFlags: 0

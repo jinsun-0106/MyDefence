@@ -71,7 +71,7 @@ namespace MyDefence
 
 
             //마우스를 스크린 상하좌우 끝 부분(기준 폭: 10)에 가져가면 맵을 스크롤 시킨다
-            float mouseX = Input.mousePosition.x;
+           /* float mouseX = Input.mousePosition.x;
             float mouseY = Input.mousePosition.y;
 
 
@@ -93,7 +93,7 @@ namespace MyDefence
             if (mouseX <= border && mouseX >= 0f)
             {
                 this.transform.Translate(Vector3.left * Time.deltaTime * moveSpeed, Space.World);
-            }
+            }*/
 
             //마우스 스크롤값을 입력받아 줌인, 줌아웃 (높이 조절) 기능 구현
             float scroll = Input.GetAxis("Mouse ScrollWheel");

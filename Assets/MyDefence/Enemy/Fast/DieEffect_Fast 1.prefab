@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4023507746925851324}
   - component: {fileID: 2949416309524247440}
   m_Layer: 0
-  m_Name: DieEffect
+  m_Name: DieEffect_Fast 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4838,7 +4838,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88799356d4285544dbf08a36144994c1, type: 2}
+  - {fileID: 2100000, guid: ab5eb1e4c5cf3bd4ebc6b595b880c874, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

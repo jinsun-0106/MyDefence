@@ -11,7 +11,16 @@ namespace MyDefence
 
     public class WaveSpawnManager : MonoBehaviour
     {
-        #region
+        #region Variables
+
+        //현재 살아있는 적의 수
+        public static int enemyAlive = 0;
+
+
+        //웨이브 데이터 셋팅: 프리팹, 생성 갯수, 생성 딜레이
+        public Wave[] waves;                //waves[0] ~ waves[4]
+
+
         //적 프리팹 오브젝트 - 원본
         public GameObject enemyPrefab;
 
@@ -24,8 +33,16 @@ namespace MyDefence
         //웨이브 카운트
         private int waveCount = 0;
 
+        //이번 웨이브에 생성되는 적의 수
+        private int enemyCount = 0;
+
         //UI - Text 
-        public TextMeshProUGUI countdownText;
+        //public TextMeshProUGUI countdownText;
+
+        public GameObject startButton;
+        public GameObject waveCountUI;
+
+        public TextMeshProUGUI waveCountText;
 
         #endregion
 
@@ -40,12 +57,14 @@ namespace MyDefence
         private void Update()
         {
             //스폰 (5초) 타이머
-            countdown += Time.deltaTime;
-            
+            /*countdown += Time.deltaTime;
+
             if (countdown >= spawnTimer)
             {
-                //타이머 기능 실행
-                StartCoroutine(SpawnWave());
+                //마지막 웨이브가 끝났는지 체크 - 웨이브 스폰 기능 정지
+                WaveSpawn();
+
+                //StartCoroutine(SpawnWave());
 
                 //타이머 초기화
                 countdown = 0f;
@@ -55,7 +74,19 @@ namespace MyDefence
             //countdown 특정 범위(min, max) 설정 (- 값이 안되도록 설정)
             countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
             //countdownText.text = string.Format("{0:00.00}", countdown);         //실수(소수점 이하) 출력
-            countdownText.text = Mathf.Round(countdown).ToString();
+            countdownText.text = Mathf.Round(countdown).ToString();*/
+
+            if(enemyAlive <= 0)
+            {
+                if(startButton.activeSelf == false)
+                {
+                    WaveReady();
+                }
+            }
+            else
+            {
+                waveCountText.text = enemyAlive.ToString() + "/" + enemyCount.ToString();
+            }
 
 
 
@@ -64,36 +95,72 @@ namespace MyDefence
 
 
         #region Custom Method
+        private void WaveSpawn()
+        {
+            StartCoroutine(SpawnWave());
+
+        }
         
         //enemy 스폰 웨이브
         IEnumerator SpawnWave()
-        {
-            waveCount++;
+        {            
+            //waves[0], waves[1], waves[2], waves[3], waves[4]
+            //웨이브 생성 데이터
+            Wave wave = waves[waveCount];
 
+            waveCount++;
             //웨이브 카운트
             PlayerStats.Rounds++;
 
-            //0.5초 지연하여 enemy 스폰
-            for ( int i = 0; i < waveCount; i++ )
+            enemyCount = wave.count;
+            enemyAlive = enemyCount;
+
+            //wave 데이터로 생성
+            for ( int i = 0; i < wave.count; i++ )
             {
-                EnemySpawn();                       //동시에 만들어짐=> 잠깐 지연하면 됨!
+                
+                EnemySpawn(wave.prefab);                       //동시에 만들어짐=> 잠깐 지연하면 됨!
 
-                yield return new WaitForSeconds(0.5f);
-            }
-
-
-
+                yield return new WaitForSeconds(wave.delayTime);
+            }            
         }
 
 
         //시작점 위치에 enemy 1개 생성
-        void EnemySpawn()
+        void EnemySpawn(GameObject prefab)
         {
-            Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
+            Instantiate(prefab, this.transform.position, Quaternion.identity);
+        }
+
+        //WaveStart 버튼 클릭 시 호출
+        public void WaveStart()
+        {
+            //UI 세팅
+            startButton.SetActive(false);
+            waveCountUI.SetActive(true);
+
+            //웨이브 시작
+            WaveSpawn();
+        }
+
+        //웨이브 대기
+        private void WaveReady()
+        {
+            //마지막 웨이브가 끝났는지 체크
+            if (waveCount >= waves.Length)
+            {
+                Debug.Log("Level Clear!");
+                this.enabled = false;
+                return;
+            }
+
+            //UI 세팅
+            startButton.SetActive(true);
+            waveCountUI.SetActive(false);
+
         }
 
 
-       
 
         #endregion
     }
