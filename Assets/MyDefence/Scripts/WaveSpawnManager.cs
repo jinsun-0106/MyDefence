@@ -44,6 +44,9 @@ namespace MyDefence
 
         public TextMeshProUGUI waveCountText;
 
+        //현재 플레이씬의 레벨
+        public int nowLevel;
+
         #endregion
 
         #region Unity Event Method
@@ -150,6 +153,16 @@ namespace MyDefence
             if (waveCount >= waves.Length)
             {
                 Debug.Log("Level Clear!");
+                //게임 데이터 저장
+                int saveLevel = PlayerPrefs.GetInt("ClearLevel", 0);
+                if(saveLevel < nowLevel)
+                {
+                    PlayerPrefs.SetInt("ClearLevel", nowLevel);
+                    Debug.Log($"clearLevel: {nowLevel}");
+                }
+
+
+
                 this.enabled = false;
                 return;
             }

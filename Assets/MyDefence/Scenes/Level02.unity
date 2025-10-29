@@ -850,6 +850,7 @@ MonoBehaviour:
   startButton: {fileID: 2029194377}
   waveCountUI: {fileID: 1833546308}
   waveCountText: {fileID: 511915784}
+  nowLevel: 2
 --- !u!1 &204934775
 GameObject:
   m_ObjectHideFlags: 0
