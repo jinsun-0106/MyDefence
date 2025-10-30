@@ -19801,11 +19801,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 10
-  startSpeed: 4
-  startHealth: 100
+  speed: 6
+  startSpeed: 6
+  startHealth: 15
   dieEffectPrefab: {fileID: 1117374512352270797, guid: 360da436822d6a54e8fa4c91ba6657b8, type: 3}
-  rewordMoney: 50
+  rewordMoney: 25
   hpBarImage: {fileID: 5421064677088583186}
 --- !u!1 &6088853903722607543
 GameObject:

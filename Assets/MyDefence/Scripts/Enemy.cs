@@ -20,8 +20,14 @@ namespace MyDefence
         [SerializeField]
         private float startSpeed = 4f;
 
+        //이동 웨이 포인트 인덱스
+        private int wayPointIndex;
+
         //체력
         private float health;
+
+        //방향전환 스피드
+        private float rotateSpeed = 10f;
 
         [SerializeField]
         private float startHealth = 100f;        //체력 초기값
@@ -47,10 +53,11 @@ namespace MyDefence
         {
             //초기화
             health = startHealth;
-
             speed = startSpeed;
+            wayPointIndex = 0;
 
-            target = WayPoints.points[0];
+            //이동 목표지점 설정
+            target = WayPoints.points[wayPointIndex];
 
 
         }
@@ -64,17 +71,27 @@ namespace MyDefence
             //방향 설정
             Vector3 dir = target.position - this.transform.position;
 
+            //방향 전환 (부드럽게)
+            if (dir != Vector3.zero) // 방향 벡터가 0이 아닐 때만 회전 계산
+            {
+                // 타겟 방향을 바라보는 회전(목표 회전)을 계산합니다.
+                Quaternion targetRotation = Quaternion.LookRotation(dir);
+
+                // 현재 회전(transform.rotation)에서 목표 회전(targetRotation)으로 
+                // 부드럽게(Slerp) 회전합니다.
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation,Time.deltaTime * rotateSpeed);
+            }
+
             //타겟 방향으로 이동
-            this.transform.Translate(dir.normalized * Time.deltaTime * speed);
+            this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
 
             //도착 판정 - 타겟과 Enemy 사이의 거리를 구한다
             float distance = Vector3.Distance(this.transform.position, target.position);
 
             //타겟과 Enemy 사이의 거리가 일정 거리 안에 들러오면 도착이라고 판정
-            if ( distance < 0.2f)
+            if ( distance < 0.1f)
             {
-                Arrive();
-                
+                SetNextTarget();                
             }
 
             //이동속도 초기 속도로 복원
@@ -84,6 +101,21 @@ namespace MyDefence
         #endregion
 
         #region Custom Method
+        //다음 타겟 설정
+        private void SetNextTarget()
+        {
+            //종점 체크
+            if (wayPointIndex >= WayPoints.points.Length-1)
+            {
+                Arrive();
+                return;
+            }
+
+            wayPointIndex++;
+
+            target = WayPoints.points[wayPointIndex];
+
+        }
 
         //종점 도착
         private void Arrive()

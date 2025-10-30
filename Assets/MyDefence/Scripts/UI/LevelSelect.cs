@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace MyDefence
 {
+    /// <summary>
+    /// 레벨 셀렉트씬을 관리하는 클레스
+    /// </summary>
     public class LevelSelect : MonoBehaviour
     {
         #region Variables
@@ -60,7 +63,7 @@ namespace MyDefence
             //클리어 레벨에 의한 자동 스크롤 세팅
             //컨텐트 길이
             float contentsRectHeight = (1 + (int)(levelButtons.Length / 5)) * (110 + 7);
-            //실제 스크롤랼
+            //실제 스크롤량
             float scrollHeight = contentsRectHeight - viewportRect.rect.height;            
 
             if(scrollHeight > 0)

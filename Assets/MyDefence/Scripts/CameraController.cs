@@ -31,8 +31,11 @@ namespace MyDefence
 
         private void Update()
         {
-            //esc 키를 한 번 누르면 카메라 이동을 못하게 막는다 isCannotMove = true
+            //게임오버 체크
+            if (GameManager.IsGameOver)
+                return;
 
+            //esc 키를 한 번 누르면 카메라 이동을 못하게 막는다 isCannotMove = true
             //esc 키를 다시 한 번 누르면 카메라 이동을 하게 한다 isCannotMove = false
             if (Input.GetKeyDown(KeyCode.Escape))
             {

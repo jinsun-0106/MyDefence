@@ -14629,9 +14629,10 @@ GameObject:
   - component: {fileID: 54888612580958166}
   - component: {fileID: 82094088292764670}
   - component: {fileID: 136866353072794800}
+  - component: {fileID: 7015956228353672722}
   m_Layer: 11
-  m_Name: Super Hoverbuggy
-  m_TagString: Untagged
+  m_Name: Hoverbuggy_Tough
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14644,7 +14645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511114609136056}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14654,7 +14655,7 @@ Transform:
   - {fileID: 4723222631917200}
   - {fileID: 4525465222503316}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &54888612580958166
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14692,7 +14693,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243247032315055076, guid: c40bed98f23a748f89472abe9c1a6871, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 284169030cdb44ac5aeed3136719a521, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 284169030cdb44ac5aeed3136719a521, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -14802,6 +14803,25 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.42, z: 0}
+--- !u!114 &7015956228353672722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511114609136056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024c7e0e1dc808c4cb851d279ceadbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 2.5
+  startSpeed: 2.5
+  startHealth: 350
+  dieEffectPrefab: {fileID: 1117374512352270797, guid: 9ccba826d5b31cd4bbd3c2483a0e4274, type: 3}
+  rewordMoney: 140
+  hpBarImage: {fileID: 4061703115930493303}
 --- !u!1 &1642931047177460
 GameObject:
   m_ObjectHideFlags: 0
@@ -38929,7 +38949,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243152050609072968, guid: c40bed98f23a748f89472abe9c1a6871, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
