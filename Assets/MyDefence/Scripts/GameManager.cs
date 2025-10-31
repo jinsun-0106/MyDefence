@@ -1,4 +1,3 @@
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace MyDefence
@@ -113,7 +112,7 @@ namespace MyDefence
             if (saveLevel < nowLevel)
             {
                 PlayerPrefs.SetInt("ClearLevel", nowLevel);
-                Debug.Log($"clearLevel: {nowLevel}");
+                //Debug.Log($"clearLevel: {nowLevel}");
             }
 
             //UI창 열기

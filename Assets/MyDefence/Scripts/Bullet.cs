@@ -88,13 +88,26 @@ namespace MyDefence
         {
             //_target에게 attackDamage 만큼 데미지 주기
             //객체 가져오기 -> 함수 사용
-            Enemy enemy =_target.GetComponent<Enemy>();
+            /*Enemy enemy =_target.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(attackDamage);
 
             }
-                        
+
+            Enemy_N enemy_N = _target.GetComponent<Enemy_N>();
+            if (enemy_N != null)
+            {
+                enemy_N.TakeDamage(attackDamage);
+
+            }*/
+
+            IDamageable damageable = _target.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(attackDamage);
+            }
+
             //타겟 킬                        
             //Destroy(_target.gameObject);
         }

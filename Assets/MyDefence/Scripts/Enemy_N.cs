@@ -6,9 +6,12 @@ namespace MyDefence
     /// <summary>
     /// Enemy를 관리하는 클래스
     /// </summary>
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy_N : MonoBehaviour, IDamageable
     {
         #region 필드 선언부 (Variables)
+        //이동 목표 노드
+        private Node nextNode;
+
         //이동 목표 위치를 가지고 있는 오브젝트
         public Transform target;
 
@@ -57,7 +60,7 @@ namespace MyDefence
             wayPointIndex = 0;
 
             //이동 목표지점 설정
-            target = WayPoints.points[wayPointIndex];
+            //target = WayPoints.points[wayPointIndex];
 
 
         }
@@ -77,7 +80,8 @@ namespace MyDefence
                 // 타겟 방향을 바라보는 회전(목표 회전)을 계산합니다.
                 Quaternion targetRotation = Quaternion.LookRotation(dir);
 
-                // 현재 회전(transform.rotation)에서 목표 회전(targetRotation)으로 부드럽게(Slerp) 회전합니다.
+                // 현재 회전(transform.rotation)에서 목표 회전(targetRotation)으로 
+                // 부드럽게(Slerp) 회전합니다.
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation,Time.deltaTime * rotateSpeed);
             }
 
@@ -90,6 +94,7 @@ namespace MyDefence
             //타겟과 Enemy 사이의 거리가 일정 거리 안에 들러오면 도착이라고 판정
             if ( distance < 0.1f)
             {
+
                 SetNextTarget();                
             }
 
@@ -100,20 +105,30 @@ namespace MyDefence
         #endregion
 
         #region Custom Method
+        //다음 node 설정
+        public void SetNextNode(Node next)
+        {
+            //nextNode : 나 다음에 이동할 노드(next)를 가지고 있다
+            nextNode = next;
+            target = nextNode.transform;
+
+        }
+
+
         //다음 타겟 설정
         private void SetNextTarget()
         {
-            //종점 체크
-            if (wayPointIndex >= WayPoints.points.Length-1)
+            //다음에 이동할 노드 가져오기
+            Node next = nextNode.GetNextNode();
+            if (next == null)
             {
                 Arrive();
                 return;
             }
 
-            wayPointIndex++;
+            SetNextNode(next);
 
-            target = WayPoints.points[wayPointIndex];
-
+            
         }
 
         //종점 도착

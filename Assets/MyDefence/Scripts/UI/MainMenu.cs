@@ -19,7 +19,7 @@ namespace MyDefence
         //플레이버튼 클릭 시 호출
         public void Play()
         {
-            Debug.Log("Go to LevelSelect");
+            //Debug.Log("Go to LevelSelect");
             fader.FadeTo(loadToScene);
         }
 

@@ -87,15 +87,17 @@ namespace MyDefence
             //데미지 주기
             //이동과 같은 개념 (누적해서 데미지 줌!)
             float frameDamage = Time.deltaTime * laserDamage;       //프레임 당 데미지
-            Enemy enemy = target.GetComponent<Enemy>();
-            if (enemy != null)
+            IDamageable damageable = target.GetComponent<IDamageable>();
+            if (damageable != null)
             {
                 //데미지 주기
-                enemy.TakeDamage(frameDamage);
+                damageable.TakeDamage(frameDamage);
 
                 //이동속도
-                enemy.Slow(slowRate);
+                damageable.Slow(slowRate);
             }
+
+
 
 
             /*damageCountdown += Time.deltaTime;

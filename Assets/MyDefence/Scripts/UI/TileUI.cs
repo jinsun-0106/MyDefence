@@ -58,6 +58,7 @@ namespace MyDefence
             
 
             ui.SetActive(true);
+
         }
 
         //타일 UI 숨기기

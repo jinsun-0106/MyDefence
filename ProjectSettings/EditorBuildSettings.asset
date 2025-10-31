@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyDefence/Scenes/Level03.unity
     guid: a63d85f6f00fb334ba63b89396b05c6c
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level04.unity
+    guid: 59cf69fcf6289c3449c2e5703ddab890
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
